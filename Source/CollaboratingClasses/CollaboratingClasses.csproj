@@ -48,7 +48,11 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="SendMailAdapter.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="MailSender.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderConfirmer.cs" />
+    <Compile Include="OrderStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

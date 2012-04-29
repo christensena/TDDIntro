@@ -76,13 +76,17 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\Packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CollaboratingClasses\" />
     <Folder Include="RedGreenRefactor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CollaboratingClasses\OrderConfirmerTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
