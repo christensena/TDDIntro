@@ -14,6 +14,7 @@ namespace UnitTests.CollaboratingClasses
     {
         private OrderConfirmer orderConfirmer;
         private MailSender mailSenderFake;
+        private OrderConfirmationEmailBuilder orderConfirmationEmailBuilderFake;
 
         [SetUp]
         public void SetUp()
@@ -23,15 +24,19 @@ namespace UnitTests.CollaboratingClasses
             // this is the version where we decide to keep the unit large
             // i.e. include collaborating classes rather than unit testing
             // them separately
-            orderConfirmer = new OrderConfirmer(mailSenderFake, new OrderConfirmationEmailBuilder());
+            //orderConfirmer = new OrderConfirmer(mailSenderFake, new OrderConfirmationEmailBuilder());
 
+            // alternative is to test them separately
+            //
+            orderConfirmationEmailBuilderFake = Substitute.For<OrderConfirmationEmailBuilder>();
+            orderConfirmer = new OrderConfirmer(mailSenderFake, orderConfirmationEmailBuilderFake);
         }
 
         [Test]
         public void ConfirmingOrder_DraftOrder_OrderShouldBeConfirmed()
         {
             // Arrange
-            var order = GetDraftOrder();
+            var order = OrderTestDataFactory.GetDraftOrder();
 
             // Act
             orderConfirmer.ConfirmOrder(order);
@@ -44,7 +49,7 @@ namespace UnitTests.CollaboratingClasses
         public void ConfirmingOrder_ConfirmedOrder_ShouldNotBeAllowed()
         {
             // Arrange
-            var order = GetConfirmedOrder();
+            var order = OrderTestDataFactory.GetConfirmedOrder();
 
             // Act
             Action action = () => orderConfirmer.ConfirmOrder(order);
@@ -56,7 +61,7 @@ namespace UnitTests.CollaboratingClasses
         [Test]
         public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeSent()
         {
-            var order = GetDraftOrder();
+            var order = OrderTestDataFactory.GetDraftOrder();
 
             // Act
             orderConfirmer.ConfirmOrder(order);
@@ -66,28 +71,20 @@ namespace UnitTests.CollaboratingClasses
         }
 
         [Test]
-        public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeSentToCustomer()
+        public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeOrderConfirmationForOrder()
         {
-            var order = GetDraftOrder();
+            var order = OrderTestDataFactory.GetDraftOrder();
+
+            var mailMessageFromBuilder = new MailMessage();
+
+            orderConfirmationEmailBuilderFake.BuildOrderConfirmationEmail(null)
+                .ReturnsForAnyArgs(mailMessageFromBuilder);
 
             // Act
             orderConfirmer.ConfirmOrder(order);
 
             // Assert
-            mailSenderFake.Received().SendMail(
-                Arg.Is<MailMessage>(m => m.To.Any(to => to.Address == order.Customer.Email)));
-        }
-
-        private static Order GetDraftOrder()
-        {
-            return new Order(new Customer("Alan", "Christensen", "alan@tradevine.com"), "1234");
-        }
-
-        private static Order GetConfirmedOrder()
-        {
-            var order = GetDraftOrder();
-            order.Confirm();
-            return order;
+            mailSenderFake.Received().SendMail(mailMessageFromBuilder);
         }
     }
 }
