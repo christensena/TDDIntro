@@ -51,6 +51,7 @@
     <Compile Include="Customer.cs" />
     <Compile Include="MailSender.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="OrderConfirmationEmailBuilder.cs" />
     <Compile Include="OrderConfirmer.cs" />
     <Compile Include="OrderStatus.cs" />
   </ItemGroup>

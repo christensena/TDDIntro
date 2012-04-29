@@ -1,26 +1,23 @@
 using System;
-using System.Net.Mail;
 
 namespace CollaboratingClasses
 {
     public class OrderConfirmer
     {
         private readonly MailSender mailSender;
+        private readonly OrderConfirmationEmailBuilder orderConfirmationEmailBuilder;
 
-        public OrderConfirmer(MailSender mailSender)
+        public OrderConfirmer(MailSender mailSender, OrderConfirmationEmailBuilder orderConfirmationEmailBuilder)
         {
             this.mailSender = mailSender;
+            this.orderConfirmationEmailBuilder = orderConfirmationEmailBuilder;
         }
 
         public void ConfirmOrder(Order order)
         {
             order.Confirm();
 
-            var mailMessage = new MailMessage(
-                "donotreply@acme.com", 
-                order.Customer.Email, 
-                "Order confirmation: " + order.Code, 
-                "Order Confirmed");
+            var mailMessage = orderConfirmationEmailBuilder.BuildOrderConfirmationEmail(order);
 
             mailSender.SendMail(mailMessage);
         }
