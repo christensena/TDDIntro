@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedGreenRefactor", "RedGreenRefactor\RedGreenRefactor.csproj", "{797F94A8-4639-492B-9BBB-8E410BA9F029}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollaboratingClasses", "CollaboratingClasses\CollaboratingClasses.csproj", "{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{E9BBF756-3AFD-4C73-90CC-DA519DA3B61B}"
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{797F94A8-4639-492B-9BBB-8E410BA9F029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{797F94A8-4639-492B-9BBB-8E410BA9F029}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{797F94A8-4639-492B-9BBB-8E410BA9F029}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{797F94A8-4639-492B-9BBB-8E410BA9F029}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU

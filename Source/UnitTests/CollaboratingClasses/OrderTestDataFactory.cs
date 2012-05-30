@@ -12,7 +12,7 @@ namespace UnitTests.CollaboratingClasses
         public static Order GetConfirmedOrder()
         {
             var order = GetDraftOrder();
-            order.Confirm();
+            order.FlagAsConfirmed();
             return order;
         }
     }

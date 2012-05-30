@@ -52,10 +52,6 @@
       <Project>{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}</Project>
       <Name>CollaboratingClasses</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RedGreenRefactor\RedGreenRefactor.csproj">
-      <Project>{797F94A8-4639-492B-9BBB-8E410BA9F029}</Project>
-      <Name>RedGreenRefactor</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

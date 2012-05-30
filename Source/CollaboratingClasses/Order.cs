@@ -20,7 +20,7 @@ namespace CollaboratingClasses
             Status = OrderStatus.Draft;
         }
 
-        public void Confirm()
+        internal void FlagAsConfirmed()
         {
             if (Status != OrderStatus.Draft)
                 throw new InvalidOperationException("Only draft orders can be confirmed.");
@@ -28,10 +28,10 @@ namespace CollaboratingClasses
             Status = OrderStatus.Confirmed;
         }
 
-        public void Shipped()
+        internal void FlagAsShipped()
         {
             if (Status != OrderStatus.Confirmed)
-                throw new InvalidOperationException("Order not confirmed!");
+                throw new InvalidOperationException("Only confirmed orders can be shipped.");
 
             Status = OrderStatus.Confirmed;
         }
