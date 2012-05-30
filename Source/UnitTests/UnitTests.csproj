@@ -83,7 +83,8 @@
     <Compile Include="CollaboratingClasses\OrderConfirmationEmailBuilderTests.cs" />
     <Compile Include="CollaboratingClasses\OrderConfirmerTests.cs" />
     <Compile Include="CollaboratingClasses\OrderTestDataFactory.cs" />
-    <Compile Include="RedGreenRefactor\TenPinScorerSuite.cs" />
+    <Compile Include="RedGreenRefactor\OOVersion\Game.cs" />
+    <Compile Include="RedGreenRefactor\OOVersion\GameScoringSuite.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
