@@ -19,16 +19,11 @@ namespace UnitTests.CollaboratingClasses
         [SetUp]
         public void SetUp()
         {
+            // dependencies (substituted with fake versions)
             mailSenderFake = Substitute.For<MailSender>();
-
-            // this is the version where we decide to keep the unit large
-            // i.e. include collaborating classes rather than unit testing
-            // them separately
-            //orderConfirmer = new OrderConfirmer(mailSenderFake, new OrderConfirmationEmailBuilder());
-
-            // alternative is to test them separately
-            //
             orderConfirmationEmailBuilderFake = Substitute.For<OrderConfirmationEmailBuilder>();
+
+            // test target
             orderConfirmer = new OrderConfirmer(mailSenderFake, orderConfirmationEmailBuilderFake);
         }
 
