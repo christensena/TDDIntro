@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{69334B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollaboratingClasses", "CollaboratingClasses\CollaboratingClasses.csproj", "{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalSystemIntegration", "ExternalSystemIntegration\ExternalSystemIntegration.csproj", "{33484034-61C2-4181-A547-A8C93B3A720C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,12 @@ Global
 		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Release|x86.ActiveCfg = Release|x86
 		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Release|x86.Build.0 = Release|x86
+		{33484034-61C2-4181-A547-A8C93B3A720C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33484034-61C2-4181-A547-A8C93B3A720C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33484034-61C2-4181-A547-A8C93B3A720C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{33484034-61C2-4181-A547-A8C93B3A720C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33484034-61C2-4181-A547-A8C93B3A720C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33484034-61C2-4181-A547-A8C93B3A720C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

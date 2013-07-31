@@ -77,6 +77,10 @@
       <Project>{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}</Project>
       <Name>CollaboratingClasses</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExternalSystemIntegration\ExternalSystemIntegration.csproj">
+      <Project>{33484034-61C2-4181-A547-A8C93B3A720C}</Project>
+      <Name>ExternalSystemIntegration</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollaboratingClasses\OrderConfirmationEmailBuilderTests.cs" />
