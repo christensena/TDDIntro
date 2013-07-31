@@ -27,6 +27,8 @@ namespace UnitTests.CollaboratingClasses
             orderConfirmer = new OrderConfirmer(mailSenderFake, orderConfirmationEmailBuilderFake);
         }
 
+        // basic state test. order status should change to confirmed
+        // if we confirm a draft order
         [Test]
         public void ConfirmingOrder_DraftOrder_OrderShouldBeConfirmed()
         {
@@ -40,6 +42,8 @@ namespace UnitTests.CollaboratingClasses
             order.Status.Should().Be(OrderStatus.Confirmed);
         }
 
+        // what happens if the order is already confirmed? invalid. shouldn't get here but make sure we don't
+        // get an order repeat (remember those web forms with the warnings about clicking Submit twice?)
         [Test]
         public void ConfirmingOrder_ConfirmedOrder_ShouldNotBeAllowed()
         {
@@ -53,6 +57,7 @@ namespace UnitTests.CollaboratingClasses
             action.ShouldThrow<InvalidOperationException>();
         }
 
+        // verify via behaviour. locks us in to implementation
         [Test]
         public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeSent()
         {
@@ -65,6 +70,13 @@ namespace UnitTests.CollaboratingClasses
             mailSenderFake.ReceivedWithAnyArgs().SendMail(null);
         }
 
+        // when we go to write this we realise that to verify the confirmation email content
+        // feels hard and awkward--listen to tests: creating a confirmation email is probably
+        // a separate responsibility, separate test suite, separate "unit".
+
+        // at this point we create a 'dependency' for building emails but we don't 
+        // need to implement now. dynamic stubs/substitute can help here
+        // this substitute also lets us try out, define our API for building emails
         [Test]
         public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeOrderConfirmationForOrder()
         {
@@ -72,7 +84,7 @@ namespace UnitTests.CollaboratingClasses
 
             var mailMessageFromBuilder = new MailMessage();
 
-            orderConfirmationEmailBuilderFake.BuildOrderConfirmationEmail(null)
+            orderConfirmationEmailBuilderFake.BuildOrderConfirmationEmail(order)
                 .ReturnsForAnyArgs(mailMessageFromBuilder);
 
             // Act

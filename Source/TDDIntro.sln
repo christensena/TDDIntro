@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{69334B
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollaboratingClasses", "CollaboratingClasses\CollaboratingClasses.csproj", "{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,14 @@ Global
 		{E9BBF756-3AFD-4C73-90CC-DA519DA3B61B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9BBF756-3AFD-4C73-90CC-DA519DA3B61B}.Release|x86.ActiveCfg = Release|x86
 		{E9BBF756-3AFD-4C73-90CC-DA519DA3B61B}.Release|x86.Build.0 = Release|x86
+		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Debug|x86.ActiveCfg = Debug|x86
+		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Debug|x86.Build.0 = Debug|x86
+		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Release|x86.ActiveCfg = Release|x86
+		{FE5AC297-40A3-4B4B-9D5F-3464A80ACEE3}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@ namespace UnitTests.CollaboratingClasses
     {
         public static Order GetDraftOrder()
         {
-            return new Order(new Customer("Alan", "Christensen", "alan@tradevine.com"), "1234");
+            return new Order(new Customer("Alan", "Christensen", "alan@christensen.org.nz"), "1234");
         }
 
         public static Order GetConfirmedOrder()
