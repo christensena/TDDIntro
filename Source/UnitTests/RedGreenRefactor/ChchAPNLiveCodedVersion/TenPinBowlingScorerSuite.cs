@@ -1,10 +1,9 @@
-using System;
 using System.Linq;
 using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace UnitTests.RedGreenRefactor
+namespace UnitTests.RedGreenRefactor.ChchAPNLiveCodedVersion
 {
     [TestFixture]
     public class TenPinBowlingScorerSuite
