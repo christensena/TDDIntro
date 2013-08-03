@@ -15,6 +15,7 @@ namespace UnitTests.CollaboratingClasses
         private OrderConfirmer orderConfirmer;
         private MailSender mailSenderFake;
         private OrderConfirmationEmailBuilder orderConfirmationEmailBuilderFake;
+        private OrderFulfillmentQueue orderFulfillmentQueueFake;
 
         [SetUp]
         public void SetUp()
@@ -22,9 +23,11 @@ namespace UnitTests.CollaboratingClasses
             // dependencies (substituted with fake versions)
             mailSenderFake = Substitute.For<MailSender>();
             orderConfirmationEmailBuilderFake = Substitute.For<OrderConfirmationEmailBuilder>();
+            orderFulfillmentQueueFake = Substitute.For<OrderFulfillmentQueue>();
+            orderFulfillmentQueueFake.WhenForAnyArgs(x => x.Enqueue(null)).Do(ci => { });
 
             // test target
-            orderConfirmer = new OrderConfirmer(mailSenderFake, orderConfirmationEmailBuilderFake);
+            orderConfirmer = new OrderConfirmer(mailSenderFake, orderConfirmationEmailBuilderFake, orderFulfillmentQueueFake);
         }
 
         // basic state test. order status should change to confirmed
@@ -92,6 +95,19 @@ namespace UnitTests.CollaboratingClasses
 
             // Assert
             mailSenderFake.Received().SendMail(mailMessageFromBuilder);
+        }
+
+        [Test]
+        public void ConfirmingOrder_DraftOrder_ShouldQueueOrderFulfillment()
+        {
+            // Arrange
+            var order = OrderTestDataFactory.GetDraftOrder();
+
+            // Act
+            orderConfirmer.ConfirmOrder(order);
+
+            // Assert
+            orderFulfillmentQueueFake.Received().Enqueue(order);
         }
     }
 }

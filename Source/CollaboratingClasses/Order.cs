@@ -8,7 +8,7 @@ namespace CollaboratingClasses
 
         public Customer Customer { get; private set; }
 
-        public OrderStatus Status { get; private set; }
+        public OrderStatus Status { get; set; } // normally make this private but want to demo procedural anti-pattern
 
         public Order(Customer customer, string code)
         {

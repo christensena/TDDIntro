@@ -23,4 +23,20 @@ namespace CollaboratingClasses
                 "Hello there, Your order is confirmed and has gone off for processing");
         }
     }
+
+    public class OrderFulfillmentRequestEmailBuilder
+    {
+        private const string OrderFulfilmentEmailAddress = "shipping@ame.com";
+
+        public virtual MailMessage BuildOrderFulfillmentRequestEmailBuilder(Order order)
+        {
+            if (order == null) throw new ArgumentNullException("order");
+
+            return new MailMessage(
+                "donotreply@acme.com",
+                OrderFulfilmentEmailAddress,
+                "Order shipment request: " + order.Code,
+                "Hello there, this order is confirmed. Please arrange shipment."); 
+        }
+    }
 }

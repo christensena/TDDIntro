@@ -48,6 +48,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="OrderConfirmerProceduralVersion.cs" />
+    <Compile Include="OrderFulfillmentQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="MailSender.cs" />
