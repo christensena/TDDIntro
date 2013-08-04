@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{33484034-61C2-4181-A547-A8C93B3A720C}</ProjectGuid>
+    <ProjectGuid>{FD660AB5-D706-4875-AB08-87D8F237E034}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExternalSystemIntegration</RootNamespace>
-    <AssemblyName>ExternalSystemIntegration</AssemblyName>
+    <RootNamespace>ProductionBilling</RootNamespace>
+    <AssemblyName>ProductionBilling</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -33,11 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ChargifyNET, Version=1.0.4946.21289, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ChargifyNET">
       <HintPath>..\packages\chargify.1.0.4946.21289\lib\net35\ChargifyNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,18 +46,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementation\ChargifyBillingSystem.cs" />
-    <Compile Include="ChargifyConnectUpTheWazooNotAnAdapter.cs" />
-    <Compile Include="IBillingSystem.cs" />
-    <Compile Include="Models.cs" />
+    <Compile Include="Account.cs" />
+    <Compile Include="BillingEvent.cs" />
+    <Compile Include="BillingService.cs" />
+    <Compile Include="Events\IgnoredBillingEvent.cs" />
+    <Compile Include="Events\SubscriptionPlanChangeBillingEvent.cs" />
+    <Compile Include="Events\SubscriptionPlanSignUpBillingEvent.cs" />
+    <Compile Include="Events\SubscriptionStateChangeBillingEvent.cs" />
+    <Compile Include="Events\SubscriptionUnpaidBillingEvent.cs" />
+    <Compile Include="Events\TestBillingEvent.cs" />
+    <Compile Include="IBillingGateway.cs" />
+    <Compile Include="IBillingService.cs" />
+    <Compile Include="Implementation\BillingGateway.cs" />
+    <Compile Include="Implementation\ChargifyFieldKeys.cs" />
+    <Compile Include="Implementation\ChargifyPayloadParser.cs" />
+    <Compile Include="Implementation\HostedPageUrlGenerator.cs" />
     <Compile Include="Implementation\Mapper.cs" />
+    <Compile Include="Plan.cs" />
+    <Compile Include="PlanSubscription.cs" />
+    <Compile Include="PlanSubscriptionState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="wallet.ico" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Content Include="wallet.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
