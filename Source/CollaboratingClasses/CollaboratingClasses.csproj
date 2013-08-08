@@ -48,6 +48,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="MailSenderFake.cs" />
     <Compile Include="OrderConfirmerProceduralVersion.cs" />
     <Compile Include="OrderFulfillmentQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
