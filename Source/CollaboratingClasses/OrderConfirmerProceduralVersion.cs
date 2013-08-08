@@ -15,11 +15,11 @@ namespace CollaboratingClasses
                 throw new InvalidOperationException("Only draft orders can be confirmed");
             }
 
-            order.Status = OrderStatus.Confirmed;
+            order.Status = OrderStatus.ReadyToShip;
 
             var smtpClient = new SmtpClient();
 
-            // these emails would be much longer in practice
+            // these emails would be much longer in practice and probably not hard coded!
             var confirmationEmail = new MailMessage(
                 "donotreply@acme.com",
                 order.Customer.Email,
