@@ -83,9 +83,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollaboratingClasses\Helpers\BuildEntity.cs" />
     <Compile Include="CollaboratingClasses\OrderConfirmationEmailBuilderTests.cs" />
     <Compile Include="CollaboratingClasses\OrderConfirmerTests.cs" />
-    <Compile Include="CollaboratingClasses\OrderTestDataFactory.cs" />
+    <Compile Include="CollaboratingClasses\Helpers\OrderTestDataFactory.cs" />
+    <Compile Include="CollaboratingClasses\Helpers\Randomizer.cs" />
+    <Compile Include="CollaboratingClasses\Helpers\TestOrderBuilder.cs" />
     <Compile Include="ProductionBillling\BillingGatewayUnitTests.cs" />
     <Compile Include="ProductionBillling\MapperUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,6 +6,7 @@ using CollaboratingClasses;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
+using UnitTests.CollaboratingClasses.Helpers;
 
 namespace UnitTests.CollaboratingClasses
 {
@@ -36,7 +37,7 @@ namespace UnitTests.CollaboratingClasses
         public void ConfirmingOrder_DraftOrder_OrderShouldBeConfirmed()
         {
             // Arrange
-            var order = OrderTestDataFactory.GetDraftOrder();
+            var order = BuildEntity.Order.AsDraft().Build();
 
             // Act
             orderConfirmer.ConfirmOrder(order);
@@ -51,7 +52,7 @@ namespace UnitTests.CollaboratingClasses
         public void ConfirmingOrder_ConfirmedOrder_ShouldNotBeAllowed()
         {
             // Arrange
-            var order = OrderTestDataFactory.GetConfirmedOrder();
+            var order = BuildEntity.Order.AsReadyToShip().Build();
 
             // Act
             Action action = () => orderConfirmer.ConfirmOrder(order);
@@ -64,7 +65,7 @@ namespace UnitTests.CollaboratingClasses
         [Test]
         public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeSent()
         {
-            var order = OrderTestDataFactory.GetDraftOrder();
+            var order = BuildEntity.Order.AsDraft().Build();
 
             // Act
             orderConfirmer.ConfirmOrder(order);
@@ -83,7 +84,7 @@ namespace UnitTests.CollaboratingClasses
         [Test]
         public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeOrderConfirmationForOrder()
         {
-            var order = OrderTestDataFactory.GetDraftOrder();
+            var order = BuildEntity.Order.AsDraft().Build();
 
             var mailMessageFromBuilder = new MailMessage();
 
@@ -101,7 +102,7 @@ namespace UnitTests.CollaboratingClasses
         public void ConfirmingOrder_DraftOrder_ShouldQueueOrderFulfillment()
         {
             // Arrange
-            var order = OrderTestDataFactory.GetDraftOrder();
+            var order = BuildEntity.Order.AsDraft().Build();
 
             // Act
             orderConfirmer.ConfirmOrder(order);

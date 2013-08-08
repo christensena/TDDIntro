@@ -20,7 +20,7 @@ namespace CollaboratingClasses
             Status = OrderStatus.Draft;
         }
 
-        internal void FlagAsConfirmed()
+        internal void FlagAsReadyToShip()
         {
             if (Status != OrderStatus.Draft)
                 throw new InvalidOperationException("Only draft orders can be confirmed.");

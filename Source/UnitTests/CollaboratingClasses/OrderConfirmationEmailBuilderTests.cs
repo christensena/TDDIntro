@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CollaboratingClasses;
 using FluentAssertions;
 using NUnit.Framework;
+using UnitTests.CollaboratingClasses.Helpers;
 
 namespace UnitTests.CollaboratingClasses
 {
@@ -22,7 +23,7 @@ namespace UnitTests.CollaboratingClasses
         public void BuildEmail_EmailShouldBeAddressedToCustomer()
         {
             // Arrange
-            var order = OrderTestDataFactory.GetDraftOrder();
+            var order = BuildEntity.Order.AsDraft().Build();
 
             // Act
             var email = orderConfirmationEmailBuilder.BuildOrderConfirmationEmail(order);

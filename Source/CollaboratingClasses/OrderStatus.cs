@@ -3,7 +3,7 @@
     public enum OrderStatus
     {
         Draft,
-        Confirmed,
+        ReadyToShip,
         Shipped
     }
 }

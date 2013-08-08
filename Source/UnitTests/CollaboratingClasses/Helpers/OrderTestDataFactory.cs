@@ -1,6 +1,6 @@
 ﻿using CollaboratingClasses;
 
-namespace UnitTests.CollaboratingClasses
+namespace UnitTests.CollaboratingClasses.Helpers
 {
     internal static class OrderTestDataFactory
     {
@@ -12,7 +12,7 @@ namespace UnitTests.CollaboratingClasses
         public static Order GetConfirmedOrder()
         {
             var order = GetDraftOrder();
-            order.FlagAsConfirmed();
+            order.FlagAsReadyToShip();
             return order;
         }
     }

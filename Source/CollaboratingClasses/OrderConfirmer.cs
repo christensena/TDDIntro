@@ -17,7 +17,7 @@ namespace CollaboratingClasses
 
         public void ConfirmOrder(Order order)
         {
-            order.FlagAsConfirmed();
+            order.FlagAsReadyToShip();
 
             var mailMessage = orderConfirmationEmailBuilder.BuildOrderConfirmationEmail(order);
 
