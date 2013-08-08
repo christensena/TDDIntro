@@ -25,15 +25,15 @@ namespace CollaboratingClasses.Model
             if (Status != OrderStatus.Draft)
                 throw new InvalidOperationException("Only draft orders can be confirmed.");
 
-            Status = OrderStatus.Confirmed;
+            Status = OrderStatus.ReadyToShip;
         }
 
         internal void FlagAsShipped()
         {
-            if (Status != OrderStatus.Confirmed)
+            if (Status != OrderStatus.ReadyToShip)
                 throw new InvalidOperationException("Only confirmed orders can be shipped.");
 
-            Status = OrderStatus.Confirmed;
+            Status = OrderStatus.ReadyToShip;
         }
 
         public bool Equals(Order other)
