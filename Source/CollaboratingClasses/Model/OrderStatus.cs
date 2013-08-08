@@ -1,4 +1,4 @@
-﻿namespace CollaboratingClasses
+﻿namespace CollaboratingClasses.Model
 {
     public enum OrderStatus
     {

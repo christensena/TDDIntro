@@ -1,4 +1,6 @@
-﻿namespace CollaboratingClasses
+﻿using CollaboratingClasses.Model;
+
+namespace CollaboratingClasses
 {
     public class OrderFulfillmentQueue
     {

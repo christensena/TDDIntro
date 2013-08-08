@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CollaboratingClasses
+namespace CollaboratingClasses.Model
 {
     public class Order
     {

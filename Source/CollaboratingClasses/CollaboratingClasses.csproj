@@ -51,12 +51,12 @@
     <Compile Include="OrderConfirmerProceduralVersion.cs" />
     <Compile Include="OrderFulfillmentQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Customer.cs" />
+    <Compile Include="Model\Customer.cs" />
     <Compile Include="MailSender.cs" />
-    <Compile Include="Order.cs" />
+    <Compile Include="Model\Order.cs" />
     <Compile Include="OrderConfirmationEmailBuilder.cs" />
     <Compile Include="OrderConfirmer.cs" />
-    <Compile Include="OrderStatus.cs" />
+    <Compile Include="Model\OrderStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -1,4 +1,4 @@
-using System.Threading;
+using CollaboratingClasses.Model;
 
 namespace CollaboratingClasses
 {
