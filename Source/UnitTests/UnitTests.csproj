@@ -84,11 +84,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollaboratingClasses\Helpers\BuildEntity.cs" />
+    <Compile Include="CollaboratingClasses\Implementation\MailSender.cs" />
+    <Compile Include="CollaboratingClasses\Fakes\MailSenderFake.cs" />
+    <Compile Include="CollaboratingClasses\Implementation\OrderConfirmationEmailBuilder.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="CollaboratingClasses\Implementation\OrderConfirmer.cs" />
+    <Compile Include="CollaboratingClasses\Implementation\OrderConfirmerProceduralVersion.cs" />
+    <Compile Include="CollaboratingClasses\Implementation\OrderFulfillmentQueue.cs" />
     <Compile Include="CollaboratingClasses\OrderConfirmationEmailBuilderTests.cs" />
     <Compile Include="CollaboratingClasses\OrderConfirmerTests.cs" />
     <Compile Include="CollaboratingClasses\Helpers\OrderTestDataFactory.cs" />
     <Compile Include="CollaboratingClasses\Helpers\Randomizer.cs" />
     <Compile Include="CollaboratingClasses\Helpers\TestOrderBuilder.cs" />
+    <Compile Include="CollaboratingClasses\VerticalTests\order_confirmation_customer_notification.cs" />
+    <Compile Include="CollaboratingClasses\VerticalTests\order_confirmation_updating_order_status.cs" />
     <Compile Include="ProductionBillling\BillingGatewayUnitTests.cs" />
     <Compile Include="ProductionBillling\MapperUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

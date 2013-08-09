@@ -2,7 +2,7 @@
 using System.Net.Mail;
 using CollaboratingClasses.Model;
 
-namespace CollaboratingClasses
+namespace UnitTests.CollaboratingClasses.Implementation
 {
     public class OrderConfirmationEmailBuilder
     {

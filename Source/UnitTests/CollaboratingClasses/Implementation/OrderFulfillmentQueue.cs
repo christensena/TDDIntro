@@ -1,6 +1,6 @@
 ﻿using CollaboratingClasses.Model;
 
-namespace CollaboratingClasses
+namespace UnitTests.CollaboratingClasses.Implementation
 {
     public class OrderFulfillmentQueue
     {

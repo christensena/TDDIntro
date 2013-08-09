@@ -17,19 +17,6 @@ namespace UnitTests.CollaboratingClasses
         }
 
         [Test]
-        public void BuildEmail_EmailShouldHaveOrderCodeInSubject()
-        {
-            // Arrange
-            var order = BuildEntity.Order.AsDraft().Build();
-
-            // Act
-            var email = orderConfirmationEmailBuilder.BuildOrderConfirmationEmail(order);
-
-            // Assert
-            email.Subject.Should().Contain(order.Code);
-        }
-
-        [Test]
         public void BuildEmail_EmailShouldBeAddressedToCustomer()
         {
             // Arrange
@@ -41,5 +28,21 @@ namespace UnitTests.CollaboratingClasses
             // Assert
             email.To.Should().Contain(to => to.Address == order.Customer.Email);
         }
+<<<<<<< Updated upstream
+=======
+
+        [Test]
+        public void BuildEmail_EmailShouldHaveOrderCodeInSubject()
+        {
+            // Arrange
+            var order = BuildEntity.Order.AsDraft().Build();
+
+            // Act
+            var email = orderConfirmationEmailBuilder.BuildOrderConfirmationEmail(order);
+
+            // Assert
+            email.Subject.Should().Contain(order.Code);
+        }
+>>>>>>> Stashed changes
     }
 }

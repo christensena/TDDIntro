@@ -1,7 +1,7 @@
 using System;
 using System.Net.Mail;
 
-namespace CollaboratingClasses
+namespace UnitTests.CollaboratingClasses.Implementation
 {
     /// <summary>
     /// Smtp Client Adapter.

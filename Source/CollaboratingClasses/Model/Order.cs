@@ -55,5 +55,6 @@ namespace CollaboratingClasses.Model
         {
             return Code.GetHashCode();
         }
+
     }
 }

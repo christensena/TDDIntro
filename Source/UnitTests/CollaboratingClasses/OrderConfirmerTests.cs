@@ -1,12 +1,12 @@
 using System;
 using System.Linq;
-using System.Collections.Generic;
 using System.Net.Mail;
-using CollaboratingClasses;
+using CollaboratingClasses.Model;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 using UnitTests.CollaboratingClasses.Helpers;
+using UnitTests.CollaboratingClasses.Implementation;
 
 namespace UnitTests.CollaboratingClasses
 {
@@ -24,11 +24,9 @@ namespace UnitTests.CollaboratingClasses
             // dependencies (substituted with fake versions)
             mailSenderFake = Substitute.For<MailSender>();
             orderConfirmationEmailBuilderFake = Substitute.For<OrderConfirmationEmailBuilder>();
-            orderFulfillmentQueueFake = Substitute.For<OrderFulfillmentQueue>();
-            orderFulfillmentQueueFake.WhenForAnyArgs(x => x.Enqueue(null)).Do(ci => { });
 
             // test target
-            orderConfirmer = new OrderConfirmer(mailSenderFake, orderConfirmationEmailBuilderFake, orderFulfillmentQueueFake);
+            orderConfirmer = new OrderConfirmer(mailSenderFake, orderConfirmationEmailBuilderFake);
         }
 
         // basic state test. order status should change to confirmed
@@ -43,7 +41,7 @@ namespace UnitTests.CollaboratingClasses
             orderConfirmer.ConfirmOrder(order);
 
             // Assert
-            order.Status.Should().Be(OrderStatus.Confirmed);
+            order.Status.Should().Be(OrderStatus.ReadyToShip);
         }
 
         // what happens if the order is already confirmed? invalid. shouldn't get here but make sure we don't
@@ -98,7 +96,7 @@ namespace UnitTests.CollaboratingClasses
             mailSenderFake.Received().SendMail(mailMessageFromBuilder);
         }
 
-        [Test]
+        [Test, Ignore()]
         public void ConfirmingOrder_DraftOrder_ShouldQueueOrderFulfillment()
         {
             // Arrange
