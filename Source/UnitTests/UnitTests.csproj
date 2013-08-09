@@ -93,6 +93,8 @@
     <Compile Include="CollaboratingClasses\Implementation\OrderConfirmer.cs" />
     <Compile Include="CollaboratingClasses\Implementation\OrderConfirmerProceduralVersion.cs" />
     <Compile Include="CollaboratingClasses\Implementation\OrderFulfillmentQueue.cs" />
+    <Compile Include="CollaboratingClasses\Implementation\OrderFulfillmentRequestEmailBuilder.cs" />
+    <Compile Include="CollaboratingClasses\Implementation\TemplateEmailBuilder.cs" />
     <Compile Include="CollaboratingClasses\OrderConfirmationEmailBuilderTests.cs" />
     <Compile Include="CollaboratingClasses\OrderConfirmerTests.cs" />
     <Compile Include="CollaboratingClasses\Helpers\OrderTestDataFactory.cs" />
