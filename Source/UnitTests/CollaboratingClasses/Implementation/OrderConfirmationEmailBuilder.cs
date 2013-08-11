@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Mail;
-using CollaboratingClasses.Model;
+using CollaboratingClasses;
 
 namespace UnitTests.CollaboratingClasses.Implementation
 {
@@ -24,7 +24,13 @@ namespace UnitTests.CollaboratingClasses.Implementation
                                      {"ordernumber", order.Code}
                                  };
 
-            return templateEmailBuilder.BuildEmail("orderconfirmation", tokens);
+            var mailMessage = templateEmailBuilder.BuildEmail("orderconfirmation", tokens);
+            mailMessage.To.Add(order.Customer.Email);
+            return mailMessage;
+        }
+
+        protected OrderConfirmationEmailBuilder()
+        {   
         }
     }
 }

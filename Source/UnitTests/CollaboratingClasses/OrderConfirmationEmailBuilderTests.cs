@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Net.Mail;
 using FluentAssertions;
+using NSubstitute;
 using NUnit.Framework;
 using UnitTests.CollaboratingClasses.Helpers;
 using UnitTests.CollaboratingClasses.Implementation;
@@ -9,37 +13,28 @@ namespace UnitTests.CollaboratingClasses
     public class OrderConfirmationEmailBuilderTests
     {
         private OrderConfirmationEmailBuilder orderConfirmationEmailBuilder;
+        private TemplateEmailBuilder templateEmailBuilder;
 
         [SetUp]
         public void SetUp()
         {
-            orderConfirmationEmailBuilder = new OrderConfirmationEmailBuilder();
+            templateEmailBuilder = Substitute.For<TemplateEmailBuilder>();
+            templateEmailBuilder.BuildEmail(null, null).ReturnsForAnyArgs(new MailMessage());
+            orderConfirmationEmailBuilder = new OrderConfirmationEmailBuilder(templateEmailBuilder);
         }
 
         [Test]
-        public void BuildEmail_EmailShouldHaveOrderCodeInSubject()
+        public void BuildEmail_EmailShouldHaveOrderCode()
         {
             // Arrange
             var order = BuildEntity.Order.AsDraft().Build();
 
             // Act
-            var email = orderConfirmationEmailBuilder.BuildOrderConfirmationEmail(order);
+            orderConfirmationEmailBuilder.BuildOrderConfirmationEmail(order);
 
             // Assert
-            email.Subject.Should().Contain(order.Code);
-        }
-
-        [Test]
-        public void BuildEmail_EmailShouldBeAddressedToCustomer()
-        {
-            // Arrange
-            var order = BuildEntity.Order.AsDraft().Build();
-
-            // Act
-            var email = orderConfirmationEmailBuilder.BuildOrderConfirmationEmail(order);
-
-            // Assert
-            email.To.Should().Contain(to => to.Address == order.Customer.Email);
+            templateEmailBuilder.Received().BuildEmail(Arg.Any<string>(), Arg.Is<Dictionary<string, string>>(
+                x => x.ContainsValue(order.Code)));
         }
     }
 }

@@ -49,9 +49,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\Customer.cs" />
-    <Compile Include="Model\Order.cs" />
-    <Compile Include="Model\OrderStatus.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

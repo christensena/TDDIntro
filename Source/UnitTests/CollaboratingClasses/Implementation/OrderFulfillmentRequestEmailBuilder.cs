@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net.Mail;
-using CollaboratingClasses.Model;
+using CollaboratingClasses;
 
 namespace UnitTests.CollaboratingClasses.Implementation
 {

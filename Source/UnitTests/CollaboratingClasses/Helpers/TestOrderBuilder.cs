@@ -1,5 +1,4 @@
 ﻿using CollaboratingClasses;
-using CollaboratingClasses.Model;
 
 namespace UnitTests.CollaboratingClasses.Helpers
 {
