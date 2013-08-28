@@ -100,8 +100,7 @@
     <Compile Include="CollaboratingClasses\Helpers\OrderTestDataFactory.cs" />
     <Compile Include="CollaboratingClasses\Helpers\Randomizer.cs" />
     <Compile Include="CollaboratingClasses\Helpers\TestOrderBuilder.cs" />
-    <Compile Include="CollaboratingClasses\VerticalTests\order_confirmation_customer_notification.cs" />
-    <Compile Include="CollaboratingClasses\VerticalTests\order_confirmation_updating_order_status.cs" />
+    <Compile Include="CollaboratingClasses\VerticalTests\order_confirmation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedGreenRefactor\OOVersion\Game.cs" />
     <Compile Include="RedGreenRefactor\OOVersion\GameScoringSuite.cs" />
