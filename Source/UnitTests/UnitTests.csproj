@@ -86,7 +86,7 @@
     <Compile Include="CollaboratingClasses\Helpers\BuildEntity.cs" />
     <Compile Include="CollaboratingClasses\Implementation\MailSender.cs" />
     <Compile Include="CollaboratingClasses\Fakes\MailSenderFake.cs" />
-    <Compile Include="CollaboratingClasses\Implementation\OrderConfirmationEmailBuilder.cs">
+    <Compile Include="CollaboratingClasses\Implementation\OrderConfirmationCustomerNotifier.cs">
       <SubType>
       </SubType>
     </Compile>

@@ -25,7 +25,7 @@ namespace UnitTests.CollaboratingClasses.VerticalTests
 
             // we use the real order confirmation email builder rather than mocking it out
             // also we don't have separate tests on the mail builder (if vertical slice approach)
-            orderConfirmer = new OrderConfirmer(mailSenderFake, new OrderConfirmationEmailBuilder(new TemplateEmailBuilder()));
+            orderConfirmer = new OrderConfirmer(new OrderConfirmationCustomerNotifier(new TemplateEmailBuilder(), mailSenderFake));
         }
     }
 

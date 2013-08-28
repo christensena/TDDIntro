@@ -5,16 +5,18 @@ using CollaboratingClasses;
 
 namespace UnitTests.CollaboratingClasses.Implementation
 {
-    public class OrderConfirmationEmailBuilder
+    public class OrderConfirmationCustomerNotifier
     {
         private readonly TemplateEmailBuilder templateEmailBuilder;
+        private readonly MailSender mailSender;
 
-        public OrderConfirmationEmailBuilder(TemplateEmailBuilder templateEmailBuilder)
+        public OrderConfirmationCustomerNotifier(TemplateEmailBuilder templateEmailBuilder, MailSender mailSender)
         {
             this.templateEmailBuilder = templateEmailBuilder;
+            this.mailSender = mailSender;
         }
 
-        public virtual MailMessage BuildOrderConfirmationEmail(Order order)
+        public virtual void SendOrderConfirmedNotification(Order order)
         {
             if (order == null) throw new ArgumentNullException("order");
 
@@ -27,10 +29,11 @@ namespace UnitTests.CollaboratingClasses.Implementation
             var mailMessage = templateEmailBuilder.BuildEmail("orderconfirmation", tokens);
             mailMessage.To.Add(order.Customer.Email);
             mailMessage.Subject = "Order confirmed: " + order.Code;
-            return mailMessage;
+            
+            mailSender.SendMail(mailMessage);
         }
 
-        protected OrderConfirmationEmailBuilder()
+        protected OrderConfirmationCustomerNotifier()
         {   
         }
     }

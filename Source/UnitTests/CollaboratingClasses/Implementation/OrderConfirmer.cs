@@ -5,19 +5,16 @@ namespace UnitTests.CollaboratingClasses.Implementation
 {
     public class OrderConfirmer
     {
-        private readonly MailSender mailSender;
-        private readonly OrderConfirmationEmailBuilder orderConfirmationEmailBuilder;
+        private readonly OrderConfirmationCustomerNotifier orderConfirmationCustomerNotifier;
 
-        public OrderConfirmer(MailSender mailSender, OrderConfirmationEmailBuilder orderConfirmationEmailBuilder)
+        public OrderConfirmer(OrderConfirmationCustomerNotifier orderConfirmationCustomerNotifier)
         {
-            this.mailSender = mailSender;
-            this.orderConfirmationEmailBuilder = orderConfirmationEmailBuilder;
+            this.orderConfirmationCustomerNotifier = orderConfirmationCustomerNotifier;
         }
 
         public void ConfirmOrder(Order order)
         {
-            var customerMessage = orderConfirmationEmailBuilder.BuildOrderConfirmationEmail(order);
-            mailSender.SendMail(customerMessage);
+            orderConfirmationCustomerNotifier.SendOrderConfirmedNotification(order);
 
             order.FlagAsReadyToShip();
         }

@@ -1,112 +1,112 @@
-using System;
-using System.Linq;
-using System.Net.Mail;
-using CollaboratingClasses;
-using FluentAssertions;
-using NSubstitute;
-using NUnit.Framework;
-using UnitTests.CollaboratingClasses.Helpers;
-using UnitTests.CollaboratingClasses.Implementation;
-
-namespace UnitTests.CollaboratingClasses
-{
-    [TestFixture]
-    public class OrderConfirmerTests
-    {
-        private OrderConfirmer orderConfirmer;
-        private MailSender mailSenderFake;
-        private OrderConfirmationEmailBuilder orderConfirmationEmailBuilderFake;
-        private OrderFulfillmentQueue orderFulfillmentQueueFake;
-
-        [SetUp]
-        public void SetUp()
-        {
+//using System;
+//using System.Linq;
+//using System.Net.Mail;
+//using CollaboratingClasses;
+//using FluentAssertions;
+//using NSubstitute;
+//using NUnit.Framework;
+//using UnitTests.CollaboratingClasses.Helpers;
+//using UnitTests.CollaboratingClasses.Implementation;
+//
+//namespace UnitTests.CollaboratingClasses
+//{
+//    [TestFixture]
+//    public class OrderConfirmerTests
+//    {
+//        private OrderConfirmer orderConfirmer;
+//        private MailSender mailSenderFake;
+//        private OrderConfirmationCustomerNotifier orderConfirmationCustomerNotifierFake;
+//        private OrderFulfillmentQueue orderFulfillmentQueueFake;
+//
+//        [SetUp]
+//        public void SetUp()
+//        {
             // dependencies (substituted with fake versions)
-            mailSenderFake = Substitute.For<MailSender>();
-            orderConfirmationEmailBuilderFake = Substitute.For<OrderConfirmationEmailBuilder>();
-
+//            mailSenderFake = Substitute.For<MailSender>();
+//            orderConfirmationCustomerNotifierFake = Substitute.For<OrderConfirmationCustomerNotifier>();
+//
             // test target
-            orderConfirmer = new OrderConfirmer(mailSenderFake, orderConfirmationEmailBuilderFake);
-        }
-
+//            orderConfirmer = new OrderConfirmer(orderConfirmationCustomerNotifierFake);
+//        }
+//
         // basic state test. order status should change to confirmed
         // if we confirm a draft order
-        [Test]
-        public void ConfirmingOrder_DraftOrder_OrderShouldBeConfirmed()
-        {
+//        [Test]
+//        public void ConfirmingOrder_DraftOrder_OrderShouldBeConfirmed()
+//        {
             // Arrange
-            var order = BuildEntity.Order.AsDraft().Build();
-
+//            var order = BuildEntity.Order.AsDraft().Build();
+//
             // Act
-            orderConfirmer.ConfirmOrder(order);
-
+//            orderConfirmer.ConfirmOrder(order);
+//
             // Assert
-            order.Status.Should().Be(OrderStatus.ReadyToShip);
-        }
-
+//            order.Status.Should().Be(OrderStatus.ReadyToShip);
+//        }
+//
         // what happens if the order is already confirmed? invalid. shouldn't get here but make sure we don't
         // get an order repeat (remember those web forms with the warnings about clicking Submit twice?)
-        [Test]
-        public void ConfirmingOrder_ConfirmedOrder_ShouldNotBeAllowed()
-        {
+//        [Test]
+//        public void ConfirmingOrder_ConfirmedOrder_ShouldNotBeAllowed()
+//        {
             // Arrange
-            var order = BuildEntity.Order.AsReadyToShip().Build();
-
+//            var order = BuildEntity.Order.AsReadyToShip().Build();
+//
             // Act
-            Action action = () => orderConfirmer.ConfirmOrder(order);
-
+//            Action action = () => orderConfirmer.ConfirmOrder(order);
+//
             // Assert
-            action.ShouldThrow<InvalidOperationException>();
-        }
-
+//            action.ShouldThrow<InvalidOperationException>();
+//        }
+//
         // verify via behaviour. locks us in to implementation
-        [Test]
-        public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeSent()
-        {
-            var order = BuildEntity.Order.AsDraft().Build();
-
+//        [Test]
+//        public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeSent()
+//        {
+//            var order = BuildEntity.Order.AsDraft().Build();
+//
             // Act
-            orderConfirmer.ConfirmOrder(order);
-
+//            orderConfirmer.ConfirmOrder(order);
+//
             // Assert
-            mailSenderFake.ReceivedWithAnyArgs().SendMail(null);
-        }
-
+//            mailSenderFake.ReceivedWithAnyArgs().SendMail(null);
+//        }
+//
         // when we go to write this we realise that to verify the confirmation email content
         // feels hard and awkward--listen to tests: creating a confirmation email is probably
         // a separate responsibility, separate test suite, separate "unit".
-
+//
         // at this point we create a 'dependency' for building emails but we don't 
         // need to implement now. dynamic stubs/substitute can help here
         // this substitute also lets us try out, define our API for building emails
-        [Test]
-        public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeOrderConfirmationForOrder()
-        {
-            var order = BuildEntity.Order.AsDraft().Build();
-
-            var mailMessageFromBuilder = new MailMessage();
-
-            orderConfirmationEmailBuilderFake.BuildOrderConfirmationEmail(order)
-                .ReturnsForAnyArgs(mailMessageFromBuilder);
-
+//        [Test]
+//        public void ConfirmingOrder_DraftOrder_ConfirmationEmailShouldBeOrderConfirmationForOrder()
+//        {
+//            var order = BuildEntity.Order.AsDraft().Build();
+//
+//            var mailMessageFromBuilder = new MailMessage();
+//
+//            orderConfirmationCustomerNotifierFake.SendOrderConfirmedNotification(order)
+//                .ReturnsForAnyArgs(mailMessageFromBuilder);
+//
             // Act
-            orderConfirmer.ConfirmOrder(order);
-
+//            orderConfirmer.ConfirmOrder(order);
+//
             // Assert
-            mailSenderFake.Received().SendMail(mailMessageFromBuilder);
-        }
-
-        [Test, Ignore()]
-        public void ConfirmingOrder_DraftOrder_ShouldQueueOrderFulfillment()
-        {
+//            mailSenderFake.Received().SendMail(mailMessageFromBuilder);
+//        }
+//
+//        [Test, Ignore()]
+//        public void ConfirmingOrder_DraftOrder_ShouldQueueOrderFulfillment()
+//        {
             // Arrange
-            var order = BuildEntity.Order.AsDraft().Build();
-
+//            var order = BuildEntity.Order.AsDraft().Build();
+//
             // Act
-            orderConfirmer.ConfirmOrder(order);
-
+//            orderConfirmer.ConfirmOrder(order);
+//
             // Assert
-            orderFulfillmentQueueFake.Received().Enqueue(order);
-        }
-    }
-}
+//            orderFulfillmentQueueFake.Received().Enqueue(order);
+//        }
+//    }
+//}
