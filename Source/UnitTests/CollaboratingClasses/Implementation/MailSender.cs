@@ -22,9 +22,11 @@ namespace UnitTests.CollaboratingClasses.Implementation
         }
 
         // need this constructor if have no other parameterless constructor
-        // and want to mock
+        // and want to mock. one of few areas regions can be helpful rather than harmful
+        #region for mocking in tests
         protected MailSender()
         {
         }
+        #endregion
     }
 }

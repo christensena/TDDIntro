@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using CollaboratingClasses;
 using FluentAssertions;
 using NUnit.Framework;
@@ -8,16 +8,14 @@ using UnitTests.CollaboratingClasses.Implementation;
 
 namespace UnitTests.CollaboratingClasses.VerticalTests
 {
-    // vertical slice of order confirmation: emailing customer
-    [TestFixture]
-    public class order_confirmation_customer_notification
+    public abstract class order_confirmation
     {
-        private OrderConfirmer orderConfirmer;
-        private Order order;
-        private MailSenderFake mailSenderFake;
+        protected OrderConfirmer orderConfirmer;
+        protected Order order;
+        protected MailSenderFake mailSenderFake;
 
         [SetUp]
-        public void confirming_order()
+        public void order_confirmer()
         {
             // Arrange
             order = OrderTestDataFactory.GetDraftOrder();
@@ -28,7 +26,35 @@ namespace UnitTests.CollaboratingClasses.VerticalTests
             // we use the real order confirmation email builder rather than mocking it out
             // also we don't have separate tests on the mail builder (if vertical slice approach)
             orderConfirmer = new OrderConfirmer(mailSenderFake, new OrderConfirmationEmailBuilder(new TemplateEmailBuilder()));
+        }
+    }
 
+    // vertical slice of order confirmation: updated order status
+    [TestFixture]
+    public class order_confirmation_updating_order_status : order_confirmation
+    {
+        [SetUp]
+        public void confirming_order()
+        {
+            // Act
+            orderConfirmer.ConfirmOrder(order);
+        }
+
+        [Test]
+        public void should_set_status_to_ReadyToShip()
+        {
+            // Assert
+            order.Status.Should().Be(OrderStatus.ReadyToShip);
+        }
+    }
+
+    // vertical slice of order confirmation: emailing customer
+    [TestFixture]
+    public class order_confirmation_customer_notification : order_confirmation
+    {
+        [SetUp]
+        public void confirming_order()
+        {
             // Act
             orderConfirmer.ConfirmOrder(order);
         }
@@ -40,7 +66,7 @@ namespace UnitTests.CollaboratingClasses.VerticalTests
             mailSenderFake.GetMessagesSentToAddress(order.Customer.Email).Should().NotBeEmpty();
         }
 
-        [Test] 
+        [Test]
         public void email_subject_has_order_number()
         {
             // Assert
