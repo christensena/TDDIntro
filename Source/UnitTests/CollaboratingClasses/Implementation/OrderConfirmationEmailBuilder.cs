@@ -26,6 +26,7 @@ namespace UnitTests.CollaboratingClasses.Implementation
 
             var mailMessage = templateEmailBuilder.BuildEmail("orderconfirmation", tokens);
             mailMessage.To.Add(order.Customer.Email);
+            mailMessage.Subject = "Order confirmed: " + order.Code;
             return mailMessage;
         }
 
