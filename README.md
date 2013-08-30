@@ -1,19 +1,19 @@
-TDDIntro
-========
+# TDDIntro
 
 This is the sample code used in live coding demos for talks I've done around Test Driven Development.
 
 There is more code yet to be used in talks in this repository.
 
-Slides
-------
+## Slides
 
-Intro to TDD (Christchurch APN, May 2012)
+### Intro to TDD 
+(Christchurch APN, May 2012)
 http://www.slideshare.net/christensena/tdd-christchurch-apn-may-2012
 
-(look out for RedGreenRefactor in the solution)
+Look out for RedGreenRefactor in the solution.
 
-Practical TDD Demonstrated (Christchurch APN August 2013)
+### Practical TDD Demonstrated
+(Christchurch APN August 2013 and Christchurch Code Camp 2013)
 http://www.slideshare.net/christensena/chch-apn-aug-2013
 
-(look out for CollaboratingClasses in the solution)
+Look out for CollaboratingClasses in the solution.
