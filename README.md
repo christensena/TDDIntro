@@ -11,5 +11,9 @@ Slides
 Intro to TDD (Christchurch APN, May 2012)
 http://www.slideshare.net/christensena/tdd-christchurch-apn-may-2012
 
+(look out for RedGreenRefactor in the solution)
+
 Practical TDD Demonstrated (Christchurch APN August 2013)
 http://www.slideshare.net/christensena/chch-apn-aug-2013
+
+(look out for CollaboratingClasses in the solution)
