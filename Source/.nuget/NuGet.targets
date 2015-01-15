@@ -11,7 +11,7 @@
         <!-- We need to launch nuget.exe with the mono command if we're not on windows -->
         <NuGetToolsPath Condition=" '$(OS)' != 'Windows_NT'">$(SolutionDir).nuget</NuGetToolsPath>
         <PackagesConfig Condition=" '$(OS)' != 'Windows_NT' ">packages.config</PackagesConfig>
-        <PackagesDir Condition=" '$(OS)' != 'Windows_NT'">$(SolutionDir)packages</PackagesDir>
+        <PackagesDir Condition=" '$(OS)' != 'Windows_NT'">$(SolutionDir)../Packages</PackagesDir>
         
         <!-- NuGet command -->
         <NuGetExePath>$(NuGetToolsPath)\nuget.exe</NuGetExePath>
